@@ -25,7 +25,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 OLLAMA_REMOTE_HOST = os.getenv(
     "OLLAMA_REMOTE_HOST", "http://ollama.hgi.sanger.ac.uk:11434"
 )
-DEFAULT_MODEL = "gemma3:27b"
+DEFAULT_MODEL = "llama3.1:8b"
 
 
 # Pydantic models for structured outputs

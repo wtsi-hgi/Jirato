@@ -32,17 +32,6 @@ make setup        # Create .env file
 6. **Optional**: Check "Softpack Admin" (HI only) or "User Story" format
 7. **Generate Preview** → Review & Edit → **Create Ticket**
 
-## Project Support
-
-| Project | ID | Description |
-|---------|----|-------------|
-| HI | 14101 | HGI Informatics |
-| HB | 14800 | HGI Bioinformatics |
-| HSF | 14300 | HGI Software Farmers |
-| HSH | 14301 | HGI Software HailQC |
-| HSI | 14200 | HGI Software iBackup |
-| HSS | 14202 | HGI Software Softpack |
-| HSW | 14201 | HGI Software wrstat |
 
 ## Special Features
 
@@ -85,4 +74,4 @@ make check-env
 make clean
 ```
 
-Visit http://localhost:8000 to start creating tickets! 🍨✨
+Visit http://localhost to start creating tickets! 🍨✨
