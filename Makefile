@@ -8,8 +8,8 @@ help:
 	@echo "  make install    - Install dependencies with uv"
 	@echo "  make setup      - Set up environment file"
 	@echo "  make check-env  - Check environment variables"
-	@echo "  make run        - Run the application"
-	@echo "  make dev        - Run with auto-reload"
+	@echo "  make run        - Run the application (port 80, production)"
+	@echo "  make dev        - Run with auto-reload (port 8000, development)"
 	@echo "  make test       - Run tests"
 	@echo "  make clean      - Clean up cache files"
 	@echo "  make help       - Show this help message"
@@ -51,10 +51,10 @@ check-env:
 # Run the application
 run: check-env
 	@echo "🎫 Starting Jirato Web App..."
-	@echo "🚀 Server will be available at http://localhost:8000"
+	@echo "🚀 Server will be available at http://localhost"
 	@echo "Press Ctrl+C to stop"
 	@echo ""
-	uv run python app.py
+	sudo uv run python app.py
 
 # Run with auto-reload for development
 dev: check-env

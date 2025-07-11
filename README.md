@@ -25,7 +25,7 @@ make setup        # Create .env file
 
 ### Usage
 1. **Edit .env** and add your `JIRA_TOKEN`
-2. **Run the app**: `make run` or `make dev` (auto-reload)
+2. **Run the app**: `make run` (port 80, production) or `make dev` (port 8000, development)
 3. **Enter your JIRA username**
 4. **Select project** from dropdown (HI, HB, HSF, etc.)
 5. **Describe your request** (Slack conversations, brain dumps, etc.)
@@ -85,4 +85,4 @@ make check-env
 make clean
 ```
 
-Visit http://localhost to start creating tickets! 🍨✨
+Visit http://localhost:8000 to start creating tickets! 🍨✨
