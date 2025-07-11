@@ -52,7 +52,7 @@ check-env:
 # Run the application
 run: check-env
 	@echo "🎫 Starting Jirato Web App..."
-	@echo "🚀 Server will be available at http://localhost:8000"
+	@echo "🚀 Server will be available at http://localhost"
 	@echo "Press Ctrl+C to stop"
 	@echo ""
 	uv run python app.py
@@ -60,11 +60,11 @@ run: check-env
 # Run with auto-reload for development
 dev: check-env
 	@echo "🔄 Starting Jirato in development mode..."
-	@echo "🚀 Server will be available at http://localhost:8000"
+	@echo "🚀 Server will be available at http://localhost"
 	@echo "📝 Auto-reload enabled"
 	@echo "Press Ctrl+C to stop"
 	@echo ""
-	uv run uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+	uv run uvicorn app:app --host 0.0.0.0 --port 80 --reload
 
 # Run tests
 test:

@@ -85,4 +85,4 @@ make check-env
 make clean
 ```
 
-Visit http://localhost:8000 to start creating tickets! 🍨✨
+Visit http://localhost to start creating tickets! 🍨✨
