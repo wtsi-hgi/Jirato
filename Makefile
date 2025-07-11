@@ -39,7 +39,7 @@ check-env:
 		echo "Run 'make setup' to create it"; \
 		exit 1; \
 	fi
-	@source .env && \
+	@. .env && \
 	if [ -z "$$JIRA_TOKEN" ] || [ "$$JIRA_TOKEN" = "your_jira_token_here" ]; then \
 		echo "❌ JIRA_TOKEN not set or still default value"; \
 		echo "Please edit .env and add your JIRA_TOKEN"; \
