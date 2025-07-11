@@ -39,20 +39,19 @@ check-env:
 		echo "Run 'make setup' to create it"; \
 		exit 1; \
 	fi
-	@. .env && \
-	if [ -z "$$JIRA_TOKEN" ] || [ "$$JIRA_TOKEN" = "your_jira_token_here" ]; then \
+	@if grep -q "JIRA_TOKEN=your_jira_token_here" .env || ! grep -q "JIRA_TOKEN=" .env; then \
 		echo "❌ JIRA_TOKEN not set or still default value"; \
 		echo "Please edit .env and add your JIRA_TOKEN"; \
 		exit 1; \
 	else \
 		echo "✅ Environment variables loaded successfully"; \
-		echo "🔗 Ollama host: $${OLLAMA_REMOTE_HOST:-http://ollama.hgi.sanger.ac.uk:11434}"; \
+		echo "🔗 Ollama host: $$(grep "^OLLAMA_REMOTE_HOST=" .env | cut -d'=' -f2- | tr -d '"' || echo 'http://ollama.hgi.sanger.ac.uk:11434')"; \
 	fi
 
 # Run the application
 run: check-env
 	@echo "🎫 Starting Jirato Web App..."
-	@echo "🚀 Server will be available at http://localhost"
+	@echo "🚀 Server will be available at http://localhost:8000"
 	@echo "Press Ctrl+C to stop"
 	@echo ""
 	uv run python app.py
@@ -60,11 +59,20 @@ run: check-env
 # Run with auto-reload for development
 dev: check-env
 	@echo "🔄 Starting Jirato in development mode..."
-	@echo "🚀 Server will be available at http://localhost"
+	@echo "🚀 Server will be available at http://localhost:8000"
 	@echo "📝 Auto-reload enabled"
 	@echo "Press Ctrl+C to stop"
 	@echo ""
-	uv run uvicorn app:app --host 0.0.0.0 --port 80 --reload
+	uv run uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+
+# Run on port 80 (requires sudo)
+run-80: check-env
+	@echo "🎫 Starting Jirato Web App on port 80..."
+	@echo "🚀 Server will be available at http://localhost"
+	@echo "⚠️  Note: Port 80 requires root privileges"
+	@echo "Press Ctrl+C to stop"
+	@echo ""
+	sudo uv run python app.py
 
 # Run tests
 test:
