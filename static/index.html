@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍨 Jirato - JIRA Ticket Creator</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="gelato-icon">🍨</div>
+                <h1>Jirato</h1>
+                <p>AI-Powered JIRA Ticket Creator</p>
+            </div>
+        </header>
+
+        <main>
+            <!-- Initial form -->
+            <form id="ticketForm" class="ticket-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required 
+                           placeholder="Enter your JIRA username">
+                </div>
+
+                <div class="form-group">
+                    <label for="project">Project</label>
+                    <select id="project" name="project">
+                        <option value="HI" selected>HI (HGI Informatics)</option>
+                        <option value="HB">HB (HGI Bioinformatics)</option>
+                        <option value="HSF">HSF (HGI Software Farmers)</option>
+                        <option value="HSH">HSH (HGI Software HailQC)</option>
+                        <option value="HSI">HSI (HGI Software iBackup)</option>
+                        <option value="HSS">HSS (HGI Software Softpack)</option>
+                        <option value="HSW">HSW (HGI Software wrstat)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="prompt">Request Description</label>
+                    <textarea id="prompt" name="prompt" rows="6" required 
+                              placeholder="Put Anything, from Slack conversation to your brain dump."></textarea>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="softpackAdmin" name="softpackAdmin">
+                        <span class="checkmark"></span>
+                        Softpack Admin Ticket
+                    </label>
+                    <small class="checkbox-help">Check this if this is a softpack admin ticket (will set customfield_10110 to None)</small>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="userStory" name="userStory">
+                        <span class="checkmark"></span>
+                        Generate User Story (Connextra Template)
+                    </label>
+                    <small class="checkbox-help">Check this to generate a user story ticket using the Connextra format: "As a [user], I want [feature] so that [benefit]"</small>
+                </div>
+
+                <button type="submit" id="generateBtn" class="submit-btn">
+                    <span id="generateText">Generate Preview</span>
+                    <span id="generateSpinner" class="spinner" style="display: none;">●</span>
+                </button>
+            </form>
+
+            <!-- Preview section -->
+            <div id="previewSection" class="preview-section" style="display: none;">
+                <h3>Preview Generated Content</h3>
+                <p class="preview-instructions">Review and edit the AI-generated content below, then create your JIRA ticket:</p>
+                
+                <div class="form-group">
+                    <label for="previewSummary">Summary</label>
+                    <input type="text" id="previewSummary" class="preview-input" maxlength="100">
+                    <small class="char-counter">0/100 characters</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="previewDescription">Description</label>
+                    <textarea id="previewDescription" rows="8" class="preview-input"></textarea>
+                </div>
+
+                <div class="preview-actions">
+                    <button type="button" id="editAgainBtn" class="secondary-btn">
+                        Edit Request
+                    </button>
+                    <button type="button" id="createTicketBtn" class="submit-btn">
+                        <span id="createText">Create JIRA Ticket</span>
+                        <span id="createSpinner" class="spinner" style="display: none;">●</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="result" class="result" style="display: none;"></div>
+        </main>
+    </div>
+
+    <script src="static/app.js"></script>
+</body>
+</html> 

@@ -1,0 +1,424 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #4a4a4a;
+    background: linear-gradient(135deg, #ffeef8 0%, #f0f8ff 50%, #fff8f0 100%);
+    min-height: 100vh;
+    padding: 32px 16px;
+}
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 182, 193, 0.2);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(255, 182, 193, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+header {
+    padding: 48px 32px 32px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 182, 193, 0.2);
+    background: linear-gradient(135deg, #ffb6c1 0%, #87ceeb 100%);
+    color: white;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.gelato-icon {
+    font-size: 3rem;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.02em;
+}
+
+header p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+main {
+    padding: 48px 32px;
+}
+
+.ticket-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+label {
+    font-weight: 600;
+    color: #6b7280;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+input, select, textarea {
+    padding: 16px 20px;
+    border: 2px solid #f3e8ff;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #ffb6c1;
+    box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.1);
+    background: white;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.checkbox-group:last-of-type {
+    margin-bottom: 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #4a4a4a;
+    font-size: 0.9rem;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.checkbox-label:hover .checkmark {
+    border-color: #ffb6c1;
+    box-shadow: 0 0 0 2px rgba(255, 182, 193, 0.1);
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3e8ff;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.8);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: linear-gradient(135deg, #ffb6c1 0%, #87ceeb 100%);
+    border-color: #ffb6c1;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.checkbox-help {
+    color: #6b7280;
+    font-size: 0.8rem;
+    margin-left: 32px;
+    font-style: italic;
+}
+
+.checkbox-label.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.checkbox-label.disabled .checkmark {
+    border-color: #d1d5db;
+    background: #f3f4f6;
+}
+
+.checkbox-label.disabled .checkbox-help {
+    color: #9ca3af;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #ffb6c1 0%, #87ceeb 100%);
+    color: white;
+    border: none;
+    padding: 18px 32px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 182, 193, 0.4);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.secondary-btn {
+    background: white;
+    color: #6b7280;
+    border: 2px solid #f3e8ff;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.secondary-btn:hover:not(:disabled) {
+    background: #fef7ff;
+    border-color: #ffb6c1;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(255, 182, 193, 0.2);
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Preview section styles */
+.preview-section {
+    margin-top: 48px;
+    padding: 32px;
+    background: linear-gradient(135deg, #fef7ff 0%, #f0f8ff 100%);
+    border: 2px solid rgba(255, 182, 193, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(255, 182, 193, 0.1);
+}
+
+.preview-section h3 {
+    margin-bottom: 8px;
+    color: #4a4a4a;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.preview-instructions {
+    color: #6b7280;
+    margin-bottom: 32px;
+    font-size: 0.9rem;
+}
+
+.preview-input {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #f3e8ff;
+    border-radius: 12px;
+}
+
+.preview-input:focus {
+    border-color: #ffb6c1;
+    box-shadow: 0 0 0 3px rgba(255, 182, 193, 0.1);
+}
+
+.char-counter {
+    color: #9ca3af;
+    font-size: 0.75rem;
+    text-align: right;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.char-counter.warning {
+    color: #f59e0b;
+}
+
+.char-counter.error {
+    color: #ef4444;
+}
+
+.preview-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    align-items: center;
+}
+
+.preview-actions button {
+    flex: 1;
+}
+
+.result {
+    margin-top: 48px;
+    padding: 24px;
+    border-radius: 16px;
+    border: 2px solid;
+}
+
+.result.success {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+    border-color: #86efac;
+    color: #166534;
+    box-shadow: 0 8px 25px rgba(134, 239, 172, 0.2);
+}
+
+.result.error {
+    background: linear-gradient(135deg, #fef2f2 0%, #fef2f2 100%);
+    border-color: #fca5a5;
+    color: #991b1b;
+    box-shadow: 0 8px 25px rgba(252, 165, 165, 0.2);
+}
+
+.result h3 {
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.result p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.result a {
+    color: #ffb6c1;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.result a:hover {
+    text-decoration: underline;
+}
+
+.ollama-response {
+    margin-top: 16px;
+    padding: 20px;
+    background: linear-gradient(135deg, #fef7ff 0%, #f0f8ff 100%);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 182, 193, 0.2);
+    box-shadow: 0 4px 15px rgba(255, 182, 193, 0.1);
+}
+
+.ollama-response h4 {
+    margin-bottom: 12px;
+    color: #4a4a4a;
+    font-weight: 600;
+}
+
+.ollama-response pre {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 182, 193, 0.2);
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 16px 8px;
+    }
+
+    header {
+        padding: 32px 24px 24px;
+    }
+
+    .gelato-icon {
+        font-size: 2.5rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    main {
+        padding: 32px 24px;
+    }
+
+    .preview-section {
+        padding: 24px;
+        margin-top: 32px;
+    }
+
+    .preview-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .preview-actions button {
+        width: 100%;
+    }
+
+    .ticket-form {
+        gap: 24px;
+    }
+} 
